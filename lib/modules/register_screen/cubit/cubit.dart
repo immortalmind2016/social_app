@@ -52,6 +52,12 @@ class SocialRegisterCubit extends Cubit<RegisterStates>{
       emit(SocialRegisterSuccessStates());
       print(value.user.email);
       print(value.user.uid);
+      userCreate(
+        uId: value.user.uid,
+        email: email,
+        name : phone,
+        phone: phone,
+      );
     }).catchError((error){
       emit(SocialRegisterErrorStates(error));
       print(error.toString());

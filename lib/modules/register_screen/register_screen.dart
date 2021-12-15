@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:socialapp/modules/register_screen/cubit/cubit.dart';
 import 'package:socialapp/modules/register_screen/cubit/status.dart';
+import 'package:socialapp/modules/social_layout/social_layout.dart';
 import 'package:socialapp/shared/components/components.dart';
 
 class RegisterScreen extends StatelessWidget
@@ -23,7 +24,7 @@ class RegisterScreen extends StatelessWidget
         listener: (context,state){
           if(state is SocialCreateUserSuccessStates){
 
-          //  navigateAndFinish(context, SocialLayout());
+            navigateAndFinish(context, SocialLayout());
           }
 
         },
