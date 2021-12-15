@@ -24,15 +24,15 @@ class  LoginScreen extends StatelessWidget {
            }
           if(state is SocialLoginSuccessStates)
            {
-            // CacheHelper.saveData(
-            // key   :'uId',
-            //    value :state.uId,
-            // ).then((value)
-            //  {
-            //    navigateAndFinish(context, SocialLayout());
-            //
-            //
-            // });
+            CacheHelper.saveData(
+            key   :'uId',
+               value :state.uId,
+            ).then((value)
+             {
+               navigateAndFinish(context, SocialLayout());
+
+
+            });
 
            }
         } ,
