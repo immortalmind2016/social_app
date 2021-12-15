@@ -1,5 +1,6 @@
 
 import 'package:bloc/bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:socialapp/modules/register_screen/cubit/status.dart';
@@ -41,6 +42,17 @@ class SocialRegisterCubit extends Cubit<RegisterStates>{
     //
     //
     // });
+    FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password).then((value)
+    {
+      emit(SocialRegisterSuccessStates());
+      print(value.user.email);
+      print(value.user.uid);
+    }).catchError((error){
+      emit(SocialRegisterErrorStates(error));
+      print(error.toString());
+    });
     IconData suffix = Icons.visibility_outlined;
     bool isPassword = true ;
     void changePasswordVisibility(){
