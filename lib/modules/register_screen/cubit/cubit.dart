@@ -55,7 +55,7 @@ class SocialRegisterCubit extends Cubit<RegisterStates>{
       userCreate(
         uId: value.user.uid,
         email: email,
-        name : phone,
+        name : name,
         phone: phone,
       );
     }).catchError((error){
