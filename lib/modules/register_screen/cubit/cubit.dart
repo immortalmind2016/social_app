@@ -1,8 +1,11 @@
 
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:socialapp/models/social_user_model.dart';
 import 'package:socialapp/modules/register_screen/cubit/status.dart';
 
 class SocialRegisterCubit extends Cubit<RegisterStates>{
@@ -70,6 +73,25 @@ void userCreate({
   @required String phone ,
   @required String uId,
 }){
+    SocialUserModel model = SocialUserModel(
+      email: email,
+      name: name ,
+      phone: phone,
+      uId:  uId
+    );
+    FirebaseFirestore
+        .instance
+        .collection('Users')
+        .doc(uId)
+        .set(model.toMap()).then((value)  {
+          emit(SocialCreateUserSuccessStates());
+
+    }).catchError((error){
+      emit(SocialCreateUserErrorStates(error));
+
+
+    });
+
 
 }
 //for firebase store
