@@ -37,6 +37,7 @@ android {
         applicationId "com.emansaeed.socialapp.socialapp"
         minSdkVersion 21
         targetSdkVersion 30
+        multiDexEnabled true
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
