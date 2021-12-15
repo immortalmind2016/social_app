@@ -9,30 +9,30 @@ class SocialLoginCubit extends Cubit<LoginStates>{
   SocialLoginCubit():super(SocialLoginIntialStates());
   static SocialLoginCubit get(context)=>BlocProvider.of(context);
 
-  // void userLogin({
-  //   @required String email,
-  //   @required String password,
-  // })
-  // {
-  //   emit(SocialLoginLoadingStates());
-  //   FirebaseAuth.instance.signInWithEmailAndPassword
-  //     (email: email,
-  //       password: password).then((value)
-  //   {
-  //     print('EMAAAIIIIL'+value.user.email);
-  //     print('UIDDDDDDDDD'+value.user.uid);
-  //
-  //     emit(SocialLoginSuccessStates(value.user.uid));
-  //
-  //   }
-  //   ).catchError((error)
-  //   {
-  //     emit(SocialLoginErrorStates(error.toString()));
-  //
-  //   });
-  //
-  //
-  // }
+  void userLogin({
+    @required String email,
+    @required String password,
+  })
+  {
+    emit(SocialLoginLoadingStates());
+    FirebaseAuth.instance.signInWithEmailAndPassword
+      (email: email,
+        password: password).then((value)
+    {
+      print('EMAAAIIIIL'+value.user.email);
+      print('UIDDDDDDDDD'+value.user.uid);
+
+      emit(SocialLoginSuccessStates(value.user.uid));
+
+    }
+    ).catchError((error)
+    {
+      emit(SocialLoginErrorStates(error.toString()));
+
+    });
+
+
+  }
 
   IconData suffix = Icons.visibility_outlined;
   bool isPassword = true ;

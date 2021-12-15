@@ -17,24 +17,24 @@ class  LoginScreen extends StatelessWidget {
       create: (BuildContext context)=>SocialLoginCubit(),
       child: BlocConsumer<SocialLoginCubit,LoginStates>(
         listener:(context,state){
-          // if(state is SocialLoginErrorStates){
-          //   showToast(
-          //       text: state.error,
-          //       state: ToastStates.ERROR);
-          // }
-          // if(state is SocialLoginSuccessStates)
-          // {
-          //   CacheHelper.saveData(
-          //     key   :'uId',
-          //     value :state.uId,
-          //   ).then((value)
-          //   {
-          //     navigateAndFinish(context, SocialLayout());
-          //
-          //
-          //   });
-          //
-          // }
+           if(state is SocialLoginErrorStates){
+             showToast(
+                 text: state.error,
+                 state: ToastStates.ERROR);
+           }
+          if(state is SocialLoginSuccessStates)
+           {
+            // CacheHelper.saveData(
+            // key   :'uId',
+            //    value :state.uId,
+            // ).then((value)
+            //  {
+            //    navigateAndFinish(context, SocialLayout());
+            //
+            //
+            // });
+
+           }
         } ,
         builder: (context,stata){
           return Scaffold(
@@ -75,12 +75,12 @@ class  LoginScreen extends StatelessWidget {
                             label: 'Email address',
                             prefix: Icons.email_outlined,
                             onSubmit: (value){
-                              // if(formKey.currentState.validate()){
-                              //   SocialLoginCubit.get(context).userLogin(
-                              //     email: emailController.text,
-                              //     password: passwordController.text,
-                              //   );
-                              // }
+                               if(formKey.currentState.validate()){
+                                 SocialLoginCubit.get(context).userLogin(
+                                   email: emailController.text,
+                                   password: passwordController.text,
+                                 );
+                               }
                             }
                         ),
                         SizedBox(
@@ -112,12 +112,12 @@ class  LoginScreen extends StatelessWidget {
                           condition:true ,// state is! SocialLoginLoadingStates,
                           builder: (context)=> defaultButton(
                             function: (){
-                              // if(formKey.currentState.validate()){
-                              //   SocialLoginCubit.get(context).userLogin(
-                              //     email: emailController.text,
-                              //     password: passwordController.text,
-                              //   );
-                              // }
+                              if(formKey.currentState.validate()){
+                                SocialLoginCubit.get(context).userLogin(
+                                  email: emailController.text,
+                                  password: passwordController.text,
+                                );
+                              }
 
                             },
                             text: 'Login',
