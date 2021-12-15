@@ -63,6 +63,15 @@ class SocialRegisterCubit extends Cubit<RegisterStates>{
 
     }
   }
+  //save user data
+void userCreate({
+  @required String email ,
+  @required String name ,
+  @required String phone ,
+  @required String uId,
+}){
+
+}
 //for firebase store
 
   // void userCreate({
