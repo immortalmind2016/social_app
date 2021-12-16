@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:socialapp/modules/social_layout/cubit/cubit.dart';
 import 'package:socialapp/modules/social_layout/cubit/states.dart';
 import 'package:socialapp/shared/components/components.dart';
+import 'package:socialapp/shared/style/icon_broken.dart';
 
 class SocialLayout extends StatelessWidget {
 
@@ -15,6 +16,7 @@ class SocialLayout extends StatelessWidget {
     return BlocConsumer<SocialCubit,SocialStates>(
       listener: (context,state){},
       builder: (context,state){
+        var cubit = SocialCubit.get(context);
         return Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
@@ -25,7 +27,45 @@ class SocialLayout extends StatelessWidget {
               ),
             ),
           ),
-          body:ConditionalBuilder(
+          body:cubit.screens[cubit.currentIndex],
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: cubit.currentIndex,
+            onTap: (index){
+                cubit.changeBottomNav(index);
+            },
+            items: [
+              BottomNavigationBarItem(
+                  icon: Icon(IconBroken.Home),
+                label: 'Home',
+
+              ),
+              BottomNavigationBarItem(
+                  icon: Icon(IconBroken.Chat),
+                label: 'Chat',
+              ),
+              BottomNavigationBarItem(
+                  icon: Icon(IconBroken.Location),
+                label: 'Location',
+
+              ),
+              BottomNavigationBarItem(
+                  icon: Icon(IconBroken.Setting),
+                  label: 'Setting',
+
+              ),
+
+            ],
+          ),
+
+        );
+
+
+      },
+    );
+  }
+}
+/*email verification
+* ConditionalBuilder(
             condition: SocialCubit.get(context).model != null,
             builder: (context){
               var model = SocialCubit.get(context).model;
@@ -74,10 +114,7 @@ class SocialLayout extends StatelessWidget {
             },
             fallback: (context) => Center(child: CircularProgressIndicator()),
           ),
-        );
-
-
-      },
-    );
-  }
-}
+*
+*
+*
+* */

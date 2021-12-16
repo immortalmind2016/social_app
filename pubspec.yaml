@@ -77,14 +77,19 @@ flutter:
   #   - images/a_dot_ham.jpeg
 
 
+#
+#  assets:
+#    - assets/images/
+
   fonts:
     - family: Jannah
       fonts:
-        - asset: /assets/fonts/jannah.ttf
+        - asset: assets/fonts/jannah.ttf
           weight: 700
     - family: IconBroken
       fonts:
-        - asset: /assets/fonts/icons.ttf
+        - asset: assets/fonts/icons.ttf
+
 
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
