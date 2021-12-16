@@ -1,5 +1,7 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:conditional_builder/conditional_builder.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:socialapp/modules/social_layout/cubit/cubit.dart';
@@ -18,6 +20,9 @@ class SocialLayout extends StatelessWidget {
           appBar: AppBar(
             title: Text(
               'News Feed',
+              style: TextStyle(
+                color: Colors.black
+              ),
             ),
           ),
           body:ConditionalBuilder(
@@ -26,7 +31,7 @@ class SocialLayout extends StatelessWidget {
               var model = SocialCubit.get(context).model;
               return Column(
                 children: [
-                if(!model.isEmailVerified)
+                if(!FirebaseAuth.instance.currentUser.emailVerified)
                     Container(
                     color:Colors.amber.withOpacity(.6),
                     child: Padding(
@@ -47,7 +52,16 @@ class SocialLayout extends StatelessWidget {
                           SizedBox(width: 20.0,),
                           defaultTextButton(
 
-                            function: (){},
+                            function: (){
+                              FirebaseAuth
+                                  .instance
+                                  .currentUser
+                                  .sendEmailVerification().then((value) {
+
+                              }).catchError((error){
+                                showToast(text: 'check your mail ', state: ToastStates.SUCCESS);
+                              });
+                            },
                             text: 'Send ',
 
                           ),
