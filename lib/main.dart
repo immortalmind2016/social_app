@@ -4,7 +4,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:socialapp/BlocObserver.dart';
 import 'package:socialapp/modules/login_screen/login_screen.dart';
+import 'package:socialapp/modules/social_layout/cubit/cubit.dart';
+import 'package:socialapp/modules/social_layout/cubit/states.dart';
 import 'package:socialapp/modules/social_layout/social_layout.dart';
+import 'package:socialapp/shared/components/constants.dart';
 import 'package:socialapp/shared/network/local/cache_helper.dart';
 import 'package:socialapp/shared/style/colors.dart';
 
@@ -15,8 +18,8 @@ void main() async{
 
   Bloc.observer = MyBlocObserver();
   Widget widget;
-  var uid = CacheHelper.getData(key: 'uId');
-  if (uid != null){
+  uId = CacheHelper.getData(key: 'uId');
+  if (uId != null){
     widget = SocialLayout();
   }
   else{
@@ -26,30 +29,51 @@ void main() async{
       startWidget : widget,
   ));
 }
-
-class MyApp extends StatelessWidget {
+class MyApp extends StatelessWidget{
   final  Widget startWidget;
   MyApp({this.startWidget});
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: startWidget,
-    theme:ThemeData(
-    primarySwatch: defaultColor,
-    appBarTheme: AppBarTheme(
-    elevation: 0,
-    color: Colors.white,
-    backwardsCompatibility: false,
-    systemOverlayStyle: SystemUiOverlayStyle(
-    statusBarColor: Colors.white,
-    statusBarIconBrightness: Brightness.dark,
-    ),
-    ),
-    )
+    // TODO: implement build
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(create:(context) =>SocialCubit()..getUserData()
+          )
+        ],
+        child: BlocConsumer<SocialCubit,SocialStates>(
+          listener:(context,state){} ,
+          builder: (context,state)
+          {
+            return  MaterialApp(
+              debugShowCheckedModeBanner: false,
+              theme: ThemeData(
+               // fontFamily: 'Jannah',
+                primarySwatch: defaultColor,
+                appBarTheme: AppBarTheme(
+                  elevation: 0,
+                  color: Colors.white,
+                  backwardsCompatibility: false,
+                  systemOverlayStyle: SystemUiOverlayStyle(
+                    statusBarColor: Colors.white,
+                    statusBarIconBrightness: Brightness.dark,
+                  ),
+                ),
+                bottomNavigationBarTheme: BottomNavigationBarThemeData(
+                  unselectedItemColor:Colors.grey,
+                  selectedItemColor: defaultColor,
+                  elevation: 10,
+                  backgroundColor: Colors.white,
+                  type: BottomNavigationBarType.fixed,
+                  // backgroundColor: HexColor(''),
+                ),
+
+              ),
+              home:  startWidget,
+            );
+          },
+        )
+
     );
   }
+
 }
-
-

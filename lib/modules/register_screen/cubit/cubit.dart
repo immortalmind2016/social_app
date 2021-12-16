@@ -64,7 +64,8 @@ void userCreate({
       email: email,
       name: name ,
       phone: phone,
-      uId:  uId
+      uId:  uId ,
+      isEmailVerified:false,
     );
     FirebaseFirestore
         .instance
