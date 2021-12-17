@@ -21,7 +21,15 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '17.0.1'
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-${{ hashFiles('*/.gradle*') }}-${{ hashFiles('*/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/.kt') }}
 
+      - name: Copy  gradle properties file
+        run: mkdir -p ~/.gradle ; cp .github/ci-gradle.properties ~/.gradle/gradle.properties
       # Setup the flutter environment.
       - uses: subosito/flutter-action@v1
         with:
