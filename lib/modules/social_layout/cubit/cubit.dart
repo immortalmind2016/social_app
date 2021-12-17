@@ -10,37 +10,31 @@ import 'package:socialapp/modules/social_layout/cubit/states.dart';
 import 'package:socialapp/modules/users/users_screen.dart';
 import 'package:socialapp/shared/components/constants.dart';
 
-class SocialCubit extends Cubit <SocialStates>{
+class SocialCubit extends Cubit<SocialStates> {
   SocialCubit() : super(SocialIntialState());
   static SocialCubit get(context) => BlocProvider.of(context);
   SocialUserModel model;
   int currentIndex = 0;
-  List <Widget> screens =[
+  List<Widget> screens = [
     FeedsScreen(),
     ChatsScreen(),
     UsersScreen(),
     SettingsScreen(),
   ];
-  void changeBottomNav (int index){
+  void changeBottomNav(int index) {
     currentIndex = index;
     emit(SocialChangeBottomNavBarState());
   }
-  void getUserData (){
-      emit(SocialGetUserLoadingState());
-      FirebaseFirestore
-          .instance
-          .collection('Users')
-          .doc(uId)
-          .get()
-          .then((value) {
-            print(value.data());
-            model = SocialUserModel.fromJson(value.data());
-            emit(SocialGetUserSuccessState());
-      })
-          .catchError((error){
-            print(error.toString());
-        emit(SocialGetUserErrorState(error.toString()));
 
-      });
+  void getUserData() {
+    emit(SocialGetUserLoadingState());
+    FirebaseFirestore.instance.collection('Users').doc(uId).get().then((value) {
+      print(value.data());
+      model = SocialUserModel.fromJson(value.data());
+      emit(SocialGetUserSuccessState());
+    }).catchError((error) {
+      print(error.toString());
+      emit(SocialGetUserErrorState(error.toString()));
+    });
   }
 }

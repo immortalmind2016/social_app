@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,56 +9,46 @@ import 'package:socialapp/shared/components/components.dart';
 import 'package:socialapp/shared/style/icon_broken.dart';
 
 class SocialLayout extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SocialCubit,SocialStates>(
-      listener: (context,state){},
-      builder: (context,state){
+    return BlocConsumer<SocialCubit, SocialStates>(
+      listener: (context, state) {},
+      builder: (context, state) {
         var cubit = SocialCubit.get(context);
         return Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
             title: Text(
               'News Feed',
-              style: TextStyle(
-                color: Colors.black
-              ),
+              style: TextStyle(color: Colors.black),
             ),
           ),
-          body:cubit.screens[cubit.currentIndex],
+          body: cubit.screens[cubit.currentIndex],
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: cubit.currentIndex,
-            onTap: (index){
-                cubit.changeBottomNav(index);
+            onTap: (index) {
+              cubit.changeBottomNav(index);
             },
             items: [
               BottomNavigationBarItem(
-                  icon: Icon(IconBroken.Home),
+                icon: Icon(IconBroken.Home),
                 label: 'Home',
-
               ),
               BottomNavigationBarItem(
-                  icon: Icon(IconBroken.Chat),
+                icon: Icon(IconBroken.Chat),
                 label: 'Chat',
               ),
               BottomNavigationBarItem(
-                  icon: Icon(IconBroken.Location),
+                icon: Icon(IconBroken.Location),
                 label: 'Location',
-
               ),
               BottomNavigationBarItem(
-                  icon: Icon(IconBroken.Setting),
-                  label: 'Setting',
-
+                icon: Icon(IconBroken.Setting),
+                label: 'Setting',
               ),
-
             ],
           ),
-
         );
-
-
       },
     );
   }

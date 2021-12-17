@@ -1,11 +1,14 @@
-abstract class SocialStates{}
-class SocialIntialState extends SocialStates{}
-class SocialGetUserLoadingState extends SocialStates{}
+abstract class SocialStates {}
 
-class SocialGetUserSuccessState extends SocialStates{}
+class SocialIntialState extends SocialStates {}
 
-class SocialGetUserErrorState extends SocialStates{
+class SocialGetUserLoadingState extends SocialStates {}
+
+class SocialGetUserSuccessState extends SocialStates {}
+
+class SocialGetUserErrorState extends SocialStates {
   final String error;
   SocialGetUserErrorState(this.error);
 }
-class SocialChangeBottomNavBarState extends SocialStates{}
+
+class SocialChangeBottomNavBarState extends SocialStates {}
