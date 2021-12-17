@@ -41,12 +41,10 @@ jobs:
       #  - run: flutter test
 
       # Build apk.
-      - name: Install gradle
-        run: |
-          cd android
-          ./gradlew clean
-          ./gradlew wrapper --gradle-version 6.0.1
-          ./gradlew -v   # to download the new version
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+      - name: Build with Gradle
+        run: ./gradlew build
 
       - run: flutter build apk --debug --split-per-abi
 
