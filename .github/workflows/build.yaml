@@ -27,9 +27,7 @@ jobs:
             ~/.gradle/caches
             ~/.gradle/wrapper
           key: ${{ runner.os }}-${{ hashFiles('*/.gradle*') }}-${{ hashFiles('*/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/.kt') }}
-
-      - name: Copy  gradle properties file
-        run: mkdir -p ~/.gradle/wrapper ; cp .github/ci-gradle.properties ~/.gradle/wrapper/gradle-wrapper.properties
+        
       # Setup the flutter environment.
       - uses: subosito/flutter-action@v1
         with:
