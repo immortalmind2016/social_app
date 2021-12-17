@@ -42,11 +42,11 @@ jobs:
 
       # Build apk.
       - name: Install gradle
-          run: |
-            cd android
-            ./gradlew clean
-            ./gradlew wrapper --gradle-version 6.0.1
-            ./gradlew -v   # to download the new version
+        run: |
+          cd android
+          ./gradlew clean
+          ./gradlew wrapper --gradle-version 6.0.1
+          ./gradlew -v   # to download the new version
 
       - run: flutter build apk --debug --split-per-abi
 
