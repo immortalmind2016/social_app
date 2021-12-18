@@ -21,6 +21,12 @@ class SocialCubit extends Cubit<SocialStates> {
     UsersScreen(),
     SettingsScreen(),
   ];
+  List <String> titles = [
+    'News Feeds',
+    'Chat ',
+    'Users',
+    'Settings'
+  ];
   void changeBottomNav(int index) {
     currentIndex = index;
     emit(SocialChangeBottomNavBarState());

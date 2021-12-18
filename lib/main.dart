@@ -44,31 +44,10 @@ class MyApp extends StatelessWidget {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: lightTheme,
-              darkTheme: darkTheme,
-              themeMode: ThemeMode.light,
-              // theme: ThemeData(
-              //  // fontFamily: 'Jannah',
-              //   primarySwatch: defaultColor,
-              //   appBarTheme: AppBarTheme(
-              //     elevation: 0,
-              //     color: Colors.white,
-              //     backwardsCompatibility: false,
-              //     systemOverlayStyle: SystemUiOverlayStyle(
-              //       statusBarColor: Colors.white,
-              //       statusBarIconBrightness: Brightness.dark,
-              //     ),
-              //   ),
-              //   bottomNavigationBarTheme: BottomNavigationBarThemeData(
-              //     unselectedItemColor:Colors.grey,
-              //     selectedItemColor: defaultColor,
-              //     elevation: 10,
-              //     backgroundColor: Colors.white,
-              //     type: BottomNavigationBarType.fixed,
-              //     // backgroundColor: HexColor(''),
-              //   ),
-              //
-              //
-              // ),
+             // darkTheme: darkTheme,
+            //  themeMode: ThemeMode.dark,
+
+
               home: startWidget,
             );
           },

@@ -16,12 +16,24 @@ class SocialLayout extends StatelessWidget {
       builder: (context, state) {
         var cubit = SocialCubit.get(context);
         return Scaffold(
-          backgroundColor: Colors.white,
+          //backgroundColor: Colors.white,
           appBar: AppBar(
             title: Text(
-              'News Feed',
+              cubit.titles[cubit.currentIndex],
               style: TextStyle(color: Colors.black),
             ),
+            actions: [
+             IconButton(onPressed: (){},
+                icon: Icon(
+                  IconBroken.Notification
+                )),
+              IconButton(onPressed: (){},
+                  icon: Icon(
+                      IconBroken.Search
+                  )),
+
+            ],
+
           ),
           body: cubit.screens[cubit.currentIndex],
           bottomNavigationBar: BottomNavigationBar(

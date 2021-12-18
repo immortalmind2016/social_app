@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:socialapp/shared/style/colors.dart';
-
 ThemeData darkTheme = ThemeData(
   primarySwatch: defaultColor,
   scaffoldBackgroundColor: HexColor('333739'),
