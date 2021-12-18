@@ -28,13 +28,15 @@ class SocialCubit extends Cubit<SocialStates> {
     'Settings'
   ];
   void changeBottomNav(int index) {
-    currentIndex = index;
     if(index == 2){
       emit(SocialNewPostState());
 
     }
-    else
+    else{
+      currentIndex = index;
       emit(SocialChangeBottomNavBarState());
+
+    }
 
   }
 

@@ -3,6 +3,7 @@ import 'package:conditional_builder/conditional_builder.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:socialapp/modules/new_post/new_post_screen.dart';
 import 'package:socialapp/modules/social_layout/cubit/cubit.dart';
 import 'package:socialapp/modules/social_layout/cubit/states.dart';
 import 'package:socialapp/shared/components/components.dart';
@@ -12,7 +13,11 @@ class SocialLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SocialCubit, SocialStates>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if(state is SocialNewPostState){
+          navigateTo(context, NewPostScreen());
+        }
+      },
       builder: (context, state) {
         var cubit = SocialCubit.get(context);
         return Scaffold(
