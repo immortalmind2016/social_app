@@ -51,6 +51,10 @@ class SocialLayout extends StatelessWidget {
                 label: 'Chat',
               ),
               BottomNavigationBarItem(
+                icon: Icon(IconBroken.Paper_Upload),
+                label: 'Post ',
+              ),
+              BottomNavigationBarItem(
                 icon: Icon(IconBroken.Location),
                 label: 'Location',
               ),
@@ -58,6 +62,7 @@ class SocialLayout extends StatelessWidget {
                 icon: Icon(IconBroken.Setting),
                 label: 'Setting',
               ),
+
             ],
           ),
         );
