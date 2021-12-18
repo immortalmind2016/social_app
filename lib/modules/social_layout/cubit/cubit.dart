@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:socialapp/models/social_user_model.dart';
 import 'package:socialapp/modules/chats/chats_screen.dart';
 import 'package:socialapp/modules/feeds/feeds_screen.dart';
+import 'package:socialapp/modules/new_post/new_post_screen.dart';
 import 'package:socialapp/modules/settings/settings_screen.dart';
 import 'package:socialapp/modules/social_layout/cubit/states.dart';
 import 'package:socialapp/modules/users/users_screen.dart';
@@ -18,12 +19,14 @@ class SocialCubit extends Cubit<SocialStates> {
   List<Widget> screens = [
     FeedsScreen(),
     ChatsScreen(),
+    NewPostScreen(),
     UsersScreen(),
     SettingsScreen(),
   ];
   List <String> titles = [
     'News Feeds',
-    'Chat ',
+    'Chat',
+    'Post ',
     'Users',
     'Settings'
   ];
